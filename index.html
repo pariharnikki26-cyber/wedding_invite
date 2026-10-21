@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Invitation | Ankita & Amit</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Great+Vibes&family=Marcellus&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Custom Font Families */
+    .font-script {
+      font-family: 'Great Vibes', cursive;
+      line-height: 1.4;
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+    }
+    .font-cinzel {
+      font-family: 'Cinzel Decorative', serif;
+    }
+    .font-marcellus {
+      font-family: 'Marcellus', serif;
+    }
+    .font-sans {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* Traditional Indian Velvet / Maroon & Gold Aesthetics */
+    body {
+      background-color: #1a0206;
+      color: #f3e5ab;
+      font-family: 'Marcellus', serif;
+      overflow-x: hidden;
+    }
+
+    .bg-maroon-pattern {
+      background: radial-gradient(circle at center, #580a14 0%, #2b0308 70%, #140104 100%);
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gold-border {
+      border: 2px solid;
+      border-image: linear-gradient(to bottom right, #bf953f, #fcf6ba, #aa771c) 1;
+    }
+
+    .gold-box-shadow {
+      box-shadow: 0 10px 30px -5px rgba(191, 149, 63, 0.3);
+    }
+
+    /* Slide Layout Styling */
+    .slide-card {
+      background: rgba(43, 3, 8, 0.85);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      backdrop-filter: blur(10px);
+      border-radius: 1.5rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(212, 175, 55, 0.15);
+    }
+
+    /* Smooth Slide Transitions */
+    .slide {
+      display: none;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .slide.active {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Scratch Canvas Styling */
+    #scratchCanvas {
+      cursor: pointer;
+      touch-action: none;
+      border-radius: 1rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    /* Audio Floating Button Animation */
+    @keyframes pulse-gold {
+      0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+    }
+    .audio-pulse {
+      animation: pulse-gold 2s infinite;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-maroon-pattern flex flex-col items-center justify-between p-3 sm:p-6 relative">
+
+  <!-- Floating Audio Control -->
+  <div class="fixed top-4 right-4 z-50">
+    <button id="audioToggle" onclick="toggleAudio()" class="w-12 h-12 rounded-full bg-gradient-to-r from-amber-600 to-yellow-500 text-amber-950 flex items-center justify-center font-bold shadow-lg audio-pulse hover:scale-105 transition-transform">
+      <i id="audioIcon" class="fas fa-music text-lg"></i>
+    </button>
+  </div>
+
+  <!-- Audio Element -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="RAM RAM JAI RAJA RAM.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Main Container -->
+  <main class="w-full max-w-lg my-auto relative z-10 py-6">
+
+    <!-- ================= SLIDE 1: COVER PAGE ================= -->
+    <section id="slide-1" class="slide active flex-col items-center text-center p-6 sm:p-8 slide-card min-h-[580px] justify-between relative overflow-hidden">
+      <!-- Top Decorative Mandap Arch & Lotus -->
+      <div class="space-y-2">
+        <div class="text-amber-400 text-2xl tracking-widest">🪔 🪔 🪔</div>
+        <p class="text-xs uppercase tracking-[0.3em] text-amber-200/80">Welcome to the Celebration of</p>
+        <h3 class="font-cinzel text-lg text-amber-300 tracking-wider">House of Parihar & Shan</h3>
+      </div>
+
+      <!-- Center Monogram -->
+      <div class="my-6 relative">
+        <div class="w-28 h-28 mx-auto rounded-full border-2 border-amber-400/60 flex items-center justify-center bg-amber-950/40 shadow-inner">
+          <span class="font-script text-5xl gold-gradient-text px-2">A & A</span>
+        </div>
+        <div class="mt-4">
+          <h1 class="font-script text-4xl sm:text-5xl gold-gradient-text py-1">Ankita</h1>
+          <span class="font-cinzel text-xl text-amber-300 block my-1">&</span>
+          <h1 class="font-script text-4xl sm:text-5xl gold-gradient-text py-1">Amit</h1>
+        </div>
+      </div>
+
+      <!-- Bottom Motif -->
+      <div class="space-y-4 w-full">
+        <p class="text-xs text-amber-200/70 italic">"Two souls, one sacred journey."</p>
+        <button onclick="nextSlide()" class="w-full py-3 rounded-full bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-600 text-amber-950 font-bold uppercase tracking-wider text-xs shadow-lg hover:brightness-110 transition">
+          Begin Experience <i class="fas fa-chevron-right ml-2"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 2: COUPLE & FAMILY DETAILS ================= -->
+    <section id="slide-2" class="slide flex-col items-center text-center p-6 sm:p-8 slide-card min-h-[580px] justify-between">
+      <div class="w-full">
+        <h2 class="font-cinzel text-sm text-amber-400 tracking-widest uppercase mb-1">|| Shree Ganeshaya Namah ||</h2>
+        <div class="w-16 h-0.5 bg-amber-500 mx-auto mb-6"></div>
+
+        <!-- Bride Details -->
+        <div class="bg-amber-950/30 p-4 rounded-xl border border-amber-500/20 mb-4">
+          <h3 class="font-script text-3xl text-amber-300">Ankita Parihar</h3>
+          <p class="text-xs text-amber-200/90 mt-1">D/O Smt. Sushma Devi & Shri Balwan Singh</p>
+          <p class="text-[11px] text-amber-300/70 mt-0.5">Paternal Granddaughter of Late Smt. Gyana Devi & Shri Jagat Ram</p>
+        </div>
+
+        <div class="font-script text-2xl text-amber-400 my-1">with</div>
+
+        <!-- Groom Details -->
+        <div class="bg-amber-950/30 p-4 rounded-xl border border-amber-500/20">
+          <h3 class="font-script text-3xl text-amber-300">Amit Shan</h3>
+          <p class="text-xs text-amber-200/90 mt-1">S/O Smt. Maya Devi & Shri Om Prakash</p>
+        </div>
+      </div>
+
+      <div class="w-full mt-6">
+        <button onclick="nextSlide()" class="w-full py-3 rounded-full bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-600 text-amber-950 font-bold uppercase tracking-wider text-xs shadow-lg hover:brightness-110 transition">
+          Next: Date Reveal <i class="fas fa-chevron-right ml-2"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 3: SCRATCH FOR DATE REVEAL ================= -->
+    <section id="slide-3" class="slide flex-col items-center text-center p-6 sm:p-8 slide-card min-h-[580px] justify-between">
+      <div>
+        <h2 class="font-cinzel text-lg text-amber-300 mb-1">Save The Date</h2>
+        <p class="text-xs text-amber-200/80 mb-4">Scratch the gold card below to reveal the auspicious wedding date!</p>
+      </div>
+
+      <!-- Scratch Area Container -->
+      <div class="relative w-64 h-40 mx-auto my-auto flex items-center justify-center">
+        <!-- Hidden Secret Content (Underneath) -->
+        <div id="dateSecret" class="absolute inset-0 bg-gradient-to-br from-amber-950 to-red-950 rounded-xl border-2 border-amber-400 flex flex-col items-center justify-center p-4 text-center">
+          <span class="text-xs text-amber-300 uppercase tracking-widest mb-1">Wedding Date</span>
+          <span class="font-cinzel text-3xl font-bold gold-gradient-text">5th December</span>
+          <span class="text-sm font-semibold text-amber-200 mt-1">2026</span>
+          <span class="text-[10px] text-amber-400/80 mt-2">Doda, Jammu & Kashmir</span>
+        </div>
+
+        <!-- Scratch Canvas Top Overlay -->
+        <canvas id="scratchCanvas" width="256" height="160" class="absolute inset-0 z-20"></canvas>
+      </div>
+
+      <div class="w-full mt-4">
+        <p class="text-[11px] text-amber-300/60 mb-3" id="scratchHint">Swipe or drag across the box to reveal</p>
+        <button onclick="nextSlide()" class="w-full py-3 rounded-full bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-600 text-amber-950 font-bold uppercase tracking-wider text-xs shadow-lg hover:brightness-110 transition">
+          Continue To Countdown <i class="fas fa-chevron-right ml-2"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 4: COUNTDOWN TIMER ================= -->
+    <section id="slide-4" class="slide flex-col items-center text-center p-6 sm:p-8 slide-card min-h-[580px] justify-between">
+      <div>
+        <h2 class="font-cinzel text-lg text-amber-300 mb-1">The Grand Celebration Begins In</h2>
+        <p class="text-xs text-amber-200/70 mb-6">Counting down to 5th December 2026</p>
+
+        <!-- Timer Grid -->
+        <div class="grid grid-cols-4 gap-2 sm:gap-3 my-4">
+          <div class="bg-amber-950/60 border border-amber-500/30 p-3 rounded-xl flex flex-col items-center">
+            <span id="days" class="font-cinzel text-2xl sm:text-3xl font-bold gold-gradient-text">00</span>
+            <span class="text-[10px] uppercase tracking-wider text-amber-300/80 mt-1">Days</span>
+          </div>
+          <div class="bg-amber-950/60 border border-amber-500/30 p-3 rounded-xl flex flex-col items-center">
+            <span id="hours" class="font-cinzel text-2xl sm:text-3xl font-bold gold-gradient-text">00</span>
+            <span class="text-[10px] uppercase tracking-wider text-amber-300/80 mt-1">Hours</span>
+          </div>
+          <div class="bg-amber-950/60 border border-amber-500/30 p-3 rounded-xl flex flex-col items-center">
+            <span id="minutes" class="font-cinzel text-2xl sm:text-3xl font-bold gold-gradient-text">00</span>
+            <span class="text-[10px] uppercase tracking-wider text-amber-300/80 mt-1">Mins</span>
+          </div>
+          <div class="bg-amber-950/60 border border-amber-500/30 p-3 rounded-xl flex flex-col items-center">
+            <span id="seconds" class="font-cinzel text-2xl sm:text-3xl font-bold gold-gradient-text">00</span>
+            <span class="text-[10px] uppercase tracking-wider text-amber-300/80 mt-1">Secs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="my-4 text-amber-200/80 text-xs italic">
+        "Your presence and blessings will add grace to our joy."
+      </div>
+
+      <div class="w-full">
+        <button onclick="nextSlide()" class="w-full py-3 rounded-full bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-600 text-amber-950 font-bold uppercase tracking-wider text-xs shadow-lg hover:brightness-110 transition">
+          View Itinerary & Events <i class="fas fa-chevron-right ml-2"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 5: WEDDING ITINERARY ================= -->
+    <section id="slide-5" class="slide flex-col items-center text-center p-5 sm:p-6 slide-card min-h-[580px] justify-between">
+      <div class="w-full">
+        <h2 class="font-cinzel text-lg text-amber-300 mb-3">Wedding Events</h2>
+
+        <!-- Event Cards Stack -->
+        <div class="space-y-3 text-left max-h-[380px] overflow-y-auto pr-1">
+          
+          <!-- Haldi -->
+          <div class="bg-amber-950/40 p-3 rounded-xl border-l-4 border-yellow-400 flex items-center justify-between">
+            <div>
+              <h3 class="font-cinzel text-base text-yellow-300 font-bold">Haldi Ceremony</h3>
+              <p class="text-xs text-amber-100/90">04/12/2026 | Day (2:00 PM Onwards)</p>
+            </div>
+            <div class="text-2xl">🌼</div>
+          </div>
+
+          <!-- Mehandi -->
+          <div class="bg-amber-950/40 p-3 rounded-xl border-l-4 border-emerald-500 flex items-center justify-between">
+            <div>
+              <h3 class="font-cinzel text-base text-emerald-300 font-bold">Mehandi Night</h3>
+              <p class="text-xs text-amber-100/90">04/12/2026 | Night (8:00 PM Onwards)</p>
+            </div>
+            <div class="text-2xl">🌿</div>
+          </div>
+
+          <!-- Barat -->
+          <div class="bg-amber-950/40 p-3 rounded-xl border-l-4 border-red-500 flex items-center justify-between">
+            <div>
+              <h3 class="font-cinzel text-base text-red-300 font-bold">Barat Reception</h3>
+              <p class="text-xs text-amber-100/90">05/12/2026 | Night (8:00 PM)</p>
+            </div>
+            <div class="text-2xl">🎺</div>
+          </div>
+
+          <!-- Doli -->
+          <div class="bg-amber-950/40 p-3 rounded-xl border-l-4 border-amber-400 flex items-center justify-between">
+            <div>
+              <h3 class="font-cinzel text-base text-amber-300 font-bold">Doli Departure</h3>
+              <p class="text-xs text-amber-100/90">06/12/2026 | Day (3:00 PM)</p>
+            </div>
+            <div class="text-2xl">👑</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="w-full mt-4">
+        <button onclick="nextSlide()" class="w-full py-3 rounded-full bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-600 text-amber-950 font-bold uppercase tracking-wider text-xs shadow-lg hover:brightness-110 transition">
+          View Venue Location <i class="fas fa-chevron-right ml-2"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 6: VENUE LOCATION ================= -->
+    <section id="slide-6" class="slide flex-col items-center text-center p-6 sm:p-8 slide-card min-h-[580px] justify-between">
+      <div class="w-full">
+        <div class="text-3xl text-amber-400 mb-2"><i class="fas fa-map-marked-alt"></i></div>
+        <h2 class="font-cinzel text-lg text-amber-300 mb-1">Wedding Venue</h2>
+        <div class="w-12 h-0.5 bg-amber-500 mx-auto mb-4"></div>
+
+        <div class="bg-amber-950/40 p-5 rounded-2xl border border-amber-500/30 my-4">
+          <h3 class="font-cinzel text-base text-amber-200 font-bold mb-2">Kahilla, Jangalwar</h3>
+          <p class="text-sm text-amber-100/90 leading-relaxed">Thathri, Doda District</p>
+          <p class="text-xs text-amber-300/80 mt-1">Jammu & Kashmir</p>
+        </div>
+
+        <a href="https://maps.google.com/?q=Kahilla+Jangalwar+Thathri+Doda" target="_blank" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-amber-500/20 border border-amber-400 text-amber-300 text-xs font-semibold hover:bg-amber-500/30 transition">
+          <i class="fas fa-directions"></i> Get Directions on Google Maps
+        </a>
+      </div>
+
+      <div class="w-full mt-6">
+        <button onclick="nextSlide()" class="w-full py-3 rounded-full bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-600 text-amber-950 font-bold uppercase tracking-wider text-xs shadow-lg hover:brightness-110 transition">
+          Contact Details <i class="fas fa-chevron-right ml-2"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 7: CONTACT INFORMATION ================= -->
+    <section id="slide-7" class="slide flex-col items-center text-center p-6 sm:p-8 slide-card min-h-[580px] justify-between">
+      <div class="w-full">
+        <div class="text-3xl text-amber-400 mb-2"><i class="fas fa-phone-alt"></i></div>
+        <h2 class="font-cinzel text-lg text-amber-300 mb-1">R.S.V.P & Contact</h2>
+        <p class="text-xs text-amber-200/70 mb-6">For queries and warm blessings, please reach out to us:</p>
+
+        <div class="space-y-3 text-left">
+          <a href="tel:7006378743" class="flex items-center justify-between p-3.5 bg-amber-950/40 rounded-xl border border-amber-500/20 hover:border-amber-400 transition">
+            <div>
+              <p class="text-sm font-semibold text-amber-200">Balwan Singh</p>
+              <p class="text-xs text-amber-300/80">+91 7006378743</p>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-xs">
+              <i class="fas fa-phone"></i>
+            </div>
+          </a>
+
+          <a href="tel:6889349001" class="flex items-center justify-between p-3.5 bg-amber-950/40 rounded-xl border border-amber-500/20 hover:border-amber-400 transition">
+            <div>
+              <p class="text-sm font-semibold text-amber-200">Satyom Singh</p>
+              <p class="text-xs text-amber-300/80">+91 6889349001</p>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-xs">
+              <i class="fas fa-phone"></i>
+            </div>
+          </a>
+
+          <a href="tel:9906249743" class="flex items-center justify-between p-3.5 bg-amber-950/40 rounded-xl border border-amber-500/20 hover:border-amber-400 transition">
+            <div>
+              <p class="text-sm font-semibold text-amber-200">Ved Prakash</p>
+              <p class="text-xs text-amber-300/80">+91 9906249743</p>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-xs">
+              <i class="fas fa-phone"></i>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="w-full mt-6">
+        <button onclick="nextSlide()" class="w-full py-3 rounded-full bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-600 text-amber-950 font-bold uppercase tracking-wider text-xs shadow-lg hover:brightness-110 transition">
+          Final Message <i class="fas fa-chevron-right ml-2"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 8: ENDING / THANK YOU ================= -->
+    <section id="slide-8" class="slide flex-col items-center text-center p-6 sm:p-8 slide-card min-h-[580px] justify-between">
+      <div class="my-auto space-y-4">
+        <div class="text-4xl text-amber-400">🙏</div>
+        <h2 class="font-cinzel text-xl text-amber-300">With Best Compliments</h2>
+        <p class="text-sm text-amber-100/90 max-w-xs mx-auto leading-relaxed">
+          Near and Dear Relatives & Friends of Parihar & Shan Families
+        </p>
+        <div class="w-16 h-0.5 bg-amber-500 mx-auto my-4"></div>
+        <p class="font-script text-3xl gold-gradient-text">We look forward to celebrating with you!</p>
+      </div>
+
+      <div class="w-full space-y-2">
+        <button onclick="goToSlide(1)" class="w-full py-3 rounded-full bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-600 text-amber-950 font-bold uppercase tracking-wider text-xs shadow-lg hover:brightness-110 transition">
+          <i class="fas fa-redo ml-1 mr-2"></i> Replay Invitation
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Slide Navigation Bar -->
+  <footer class="w-full max-w-lg z-20 flex items-center justify-between gap-2 px-2 pb-2">
+    <button onclick="prevSlide()" class="px-4 py-2 rounded-full bg-amber-950/60 border border-amber-500/30 text-amber-300 text-xs font-semibold hover:bg-amber-900/60 transition">
+      <i class="fas fa-chevron-left mr-1"></i> Back
+    </button>
+    <div id="slideDots" class="flex gap-1.5">
+      <!-- Dots injected dynamically -->
+    </div>
+    <button onclick="nextSlide()" class="px-4 py-2 rounded-full bg-amber-950/60 border border-amber-500/30 text-amber-300 text-xs font-semibold hover:bg-amber-900/60 transition">
+      Next <i class="fas fa-chevron-right ml-1"></i>
+    </button>
+  </footer>
+
+  <!-- JavaScript Logic -->
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 8;
+    const bgMusic = document.getElementById('bgMusic');
+    let isPlaying = false;
+
+    // Audio Controller
+    function toggleAudio() {
+      if (isPlaying) {
+        bgMusic.pause();
+        document.getElementById('audioIcon').className = 'fas fa-music text-lg';
+      } else {
+        bgMusic.play().then(() => {
+          document.getElementById('audioIcon').className = 'fas fa-pause text-lg';
+        }).catch(e => console.log('Audio playback prevented:', e));
+      }
+      isPlaying = !isPlaying;
+    }
+
+    // Auto start audio on user click anywhere
+    document.body.addEventListener('click', () => {
+      if (!isPlaying) {
+        bgMusic.play().then(() => {
+          isPlaying = true;
+          document.getElementById('audioIcon').className = 'fas fa-pause text-lg';
+        }).catch(() => {});
+      }
+    }, { once: true });
+
+    // Navigation Logic
+    function updateDots() {
+      const dotsContainer = document.getElementById('slideDots');
+      dotsContainer.innerHTML = '';
+      for (let i = 1; i <= totalSlides; i++) {
+        const dot = document.createElement('div');
+        dot.className = `w-2 h-2 rounded-full transition-all cursor-pointer ${i === currentSlide ? 'bg-amber-400 w-4' : 'bg-amber-900/80'}`;
+        dot.onclick = () => goToSlide(i);
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function goToSlide(n) {
+      document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+      currentSlide = n;
+      document.getElementById(`slide-${currentSlide}`).classList.add('active');
+      updateDots();
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) goToSlide(currentSlide + 1);
+      else goToSlide(1);
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) goToSlide(currentSlide - 1);
+    }
+
+    // Countdown Timer (5th December 2026)
+    const targetDate = new Date("December 5, 2026 00:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = String(days).padStart(2, '0');
+        document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+        document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+        document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+      }
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Scratch Off Canvas Logic
+    const canvas = document.getElementById('scratchCanvas');
+    const ctx = canvas.getContext('2d');
+    let isDrawing = false;
+
+    function initScratch() {
+      // Fill canvas with gold scratch foil pattern
+      ctx.fillStyle = '#c5a059';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Gold shimmer text over scratch surface
+      ctx.fillStyle = '#3a2203';
+      ctx.font = 'bold 14px Marcellus, serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('✨ SCRATCH HERE ✨', canvas.width / 2, canvas.height / 2 + 5);
+    }
+
+    function scratch(e) {
+      if (!isDrawing) return;
+      const rect = canvas.getBoundingClientRect();
+      const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+      const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
+
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.beginPath();
+      ctx.arc(x, y, 18, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    canvas.addEventListener('mousedown', () => isDrawing = true);
+    canvas.addEventListener('mouseup', () => isDrawing = false);
+    canvas.addEventListener('mousemove', scratch);
+
+    canvas.addEventListener('touchstart', (e) => { isDrawing = true; scratch(e); });
+    canvas.addEventListener('touchend', () => isDrawing = false);
+    canvas.addEventListener('touchmove', scratch);
+
+    // Initial setup
+    initScratch();
+    updateDots();
+  </script>
+</body>
+</html>
